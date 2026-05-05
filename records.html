@@ -15,7 +15,7 @@
                 <li><a href="study.html">서제</a></li>
                 <li><a href="works.html">작품</a></li>
                 <li class="active"><a href="records.html">기록</a></li>
-                <li><a href="scenery.html">풍경</a></li>
+                <li><a href="scenery.html">사운드</a></li>
                 <li><a href="connect.html">연결</a></li>
             </ul>
         </nav>
@@ -23,43 +23,52 @@
     </header>
 
     <main class="sub-wrap page-enter">
-        <section class="hero">
+        <section class="hero hero-records">
             <div>
-                <p class="eyebrow">Mind Journal</p>
-                <h2>Daily<br>Trace</h2>
+                <p class="eyebrow">Self Archive</p>
+                <h2>Mood<br>Map</h2>
             </div>
-            <div class="glass-panel intro-card">
+            <div class="intro-card">
                 <span>기록</span>
-                <strong>오늘의 마음을 별자리처럼 남기는 곳</strong>
-                <p>감정의 크기보다 방향을 바라보며, 작고 조용한 변화들을 기록합니다.</p>
+                <strong>나를 알아가고 아끼는 무드 기록</strong>
+                <p>오늘의 감정이 쌓이면, 내가 어떤 순간에 흔들리고 회복되는지 보이기 시작합니다.</p>
             </div>
         </section>
 
-        <section class="section-grid">
-            <article class="card">
-                <span class="num">01</span>
-                <h3>오늘의 감정</h3>
-                <p>지금 가장 가까운 감정을 한 단어로 적고 천천히 바라봅니다.</p>
+        <section class="page-section mood-dashboard">
+            <article class="mood-today">
+                <p class="section-label">Today</p>
+                <strong>평온</strong>
+                <span>오늘의 중심 감정</span>
+                <p>아침에는 조금 흔들렸지만, 오후의 짧은 산책 뒤 호흡이 안정되었습니다.</p>
+                <div class="journal-line">오늘 나를 아껴준 행동은 <b>천천히 걷기</b> 입니다.</div>
             </article>
-            <article class="card">
-                <span class="num">02</span>
-                <h3>몸의 신호</h3>
-                <p>호흡, 어깨, 시선처럼 몸이 알려주는 작은 신호를 기록합니다.</p>
-            </article>
-            <article class="card">
-                <span class="num">03</span>
-                <h3>내일의 문장</h3>
-                <p>내일의 나에게 건네고 싶은 부드러운 한 문장을 남깁니다.</p>
-            </article>
-        </section>
 
-        <section class="ritual-list glass-panel">
-            <h3>기록 질문</h3>
-            <ul>
-                <li>오늘 나를 가장 오래 붙잡은 생각은 무엇이었나요?</li>
-                <li>내 몸이 쉬고 싶다고 말한 순간은 언제였나요?</li>
-                <li>내일의 나에게 가장 먼저 건네고 싶은 말은 무엇인가요?</li>
-            </ul>
+            <article class="mood-week">
+                <p class="section-label">Week Flow</p>
+                <div class="mood-river" aria-label="일주일 감정 흐름">
+                    <span style="--level:48%"><b>Mon</b></span>
+                    <span style="--level:72%"><b>Tue</b></span>
+                    <span style="--level:38%"><b>Wed</b></span>
+                    <span style="--level:84%"><b>Thu</b></span>
+                    <span style="--level:62%"><b>Fri</b></span>
+                    <span style="--level:78%"><b>Sat</b></span>
+                    <span style="--level:68%"><b>Sun</b></span>
+                </div>
+                <div class="mood-insight">
+                    <strong>회복 신호</strong>
+                    <p>평온과 감사가 늘어난 날에는 밤 기록을 남긴 비율이 높았습니다.</p>
+                </div>
+            </article>
+
+            <article class="mood-notes">
+                <p class="section-label">Notes</p>
+                <ul>
+                    <li><span>AM</span><p>몸이 무거웠지만 물을 마신 뒤 생각이 조금 맑아졌습니다.</p></li>
+                    <li><span>PM</span><p>해야 할 일을 하나만 남기자 불안이 낮아졌습니다.</p></li>
+                    <li><span>NT</span><p>오늘의 나에게 필요한 말은 “충분히 애썼다”였습니다.</p></li>
+                </ul>
+            </article>
         </section>
     </main>
 </body>

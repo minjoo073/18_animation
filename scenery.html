@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>풍경 | Inner Stillness</title>
+    <title>사운드 | Inner Stillness</title>
     <link rel="stylesheet" href="subpage.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
                 <li><a href="study.html">서제</a></li>
                 <li><a href="works.html">작품</a></li>
                 <li><a href="records.html">기록</a></li>
-                <li class="active"><a href="scenery.html">풍경</a></li>
+                <li class="active"><a href="scenery.html">사운드</a></li>
                 <li><a href="connect.html">연결</a></li>
             </ul>
         </nav>
@@ -23,43 +23,41 @@
     </header>
 
     <main class="sub-wrap page-enter">
-        <section class="hero">
+        <section class="hero hero-sound">
             <div>
-                <p class="eyebrow">Silent View</p>
-                <h2>Cosmic<br>Scenery</h2>
+                <p class="eyebrow">Soundscape</p>
+                <h2>Peaceful<br>Rooms</h2>
             </div>
-            <div class="glass-panel intro-card">
-                <span>풍경</span>
-                <strong>시선을 쉬게 하는 밤의 장면</strong>
-                <p>복잡한 생각을 비워낼 수 있도록 깊은 색, 느린 빛, 여백의 장면을 모았습니다.</p>
+            <div class="intro-card">
+                <span>사운드</span>
+                <strong>장면과 소리로 마음을 쉬게 하는 방</strong>
+                <p>원하는 분위기를 선택하면 화면의 장면과 백색소음이 함께 흐르는 페이지입니다.</p>
             </div>
         </section>
 
-        <section class="section-grid">
-            <article class="card">
-                <span class="num">01</span>
-                <h3>별빛의 결</h3>
-                <p>작게 반짝이는 빛의 반복으로 마음의 긴장을 낮춥니다.</p>
-            </article>
-            <article class="card">
-                <span class="num">02</span>
-                <h3>깊은 보랏빛</h3>
-                <p>차갑지만 포근한 색감으로 사색의 분위기를 만듭니다.</p>
-            </article>
-            <article class="card">
-                <span class="num">03</span>
-                <h3>천천히 흐름</h3>
-                <p>시선을 따라 움직이는 느린 애니메이션으로 호흡을 맞춥니다.</p>
-            </article>
-        </section>
-
-        <section class="ritual-list glass-panel">
-            <h3>풍경을 보는 방식</h3>
-            <ul>
-                <li>먼 곳의 빛보다 가까운 여백을 먼저 바라봅니다.</li>
-                <li>화면의 움직임을 따라 눈의 힘을 천천히 풀어줍니다.</li>
-                <li>마음이 머무는 색을 발견하면 잠시 그곳에 멈춥니다.</li>
-            </ul>
+        <section class="page-section sound-room" aria-label="선택형 사운드스케이프">
+            <input type="radio" name="soundscape" id="sound-rain" checked>
+            <input type="radio" name="soundscape" id="sound-night">
+            <input type="radio" name="soundscape" id="sound-wind">
+            <div class="sound-visual">
+                <div class="sound-orb" aria-hidden="true"></div>
+                <div class="frequency-field" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <article>
+                    <span>Breath Frequency</span>
+                    <h3>소리의 리듬에 맞춰 호흡을 늦추세요</h3>
+                    <p>선택한 사운드에 따라 파동의 간격과 속도가 달라집니다. 눈은 흐름을 따라가고, 호흡은 조금씩 길어집니다.</p>
+                    <audio src="audio/massobeats_dainty.m4a" controls></audio>
+                </article>
+            </div>
+            <div class="sound-options">
+                <label for="sound-rain"><strong>Soft Rain</strong><span>생각을 천천히 씻어내고 싶을 때</span></label>
+                <label for="sound-night"><strong>Star Night</strong><span>잠들기 전 몸을 이완하고 싶을 때</span></label>
+                <label for="sound-wind"><strong>Slow Wind</strong><span>답답한 마음에 공간이 필요할 때</span></label>
+            </div>
         </section>
     </main>
 </body>
