@@ -1,0 +1,20 @@
+:root {
+    --bg-color: #14142d;
+    --text-color: #eee8f6;
+    --text-muted: rgba(248, 243, 255, 0.76);
+    --text-soft: rgba(248, 243, 255, 0.62);
+    --accent: #ffdd9e;
+    --accent-strong: #fff4d9;
+    --accent-coral: #ff9a7f;
+    --accent-mint: #75d6c8;
+    --panel: rgba(12, 11, 30, 0.22);
+    --line: rgba(255, 255, 255, 0.14);
+    --line-accent: rgba(255, 221, 158, 0.32);
+    --container: 1320px;
+    --container-padding: clamp(20px, 5vw, 64px);
+    --section-padding: clamp(112px, 14vh, 168px);
+    --header-height: 92px;
+    --radius: 18px;
+    --font-body: 'Gowun Batang', serif;
+    --font-display: 'Cormorant Garamond', serif;
+}

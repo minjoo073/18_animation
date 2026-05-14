@@ -4,314 +4,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inner Stillness | Meditation Space</title>
-    <script>
-        const previousPage = document.referrer ? new URL(document.referrer) : null;
-        const currentPage = new URL(window.location.href);
-        const cameFromSubpage = previousPage
-            && previousPage.origin === currentPage.origin
-            && previousPage.pathname.replace(/\/$/, '/index.html') !== currentPage.pathname.replace(/\/$/, '/index.html');
-
-        if (cameFromSubpage) {
-            document.documentElement.classList.add('skip-opening');
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=block');
-
-        *{margin: 0;padding: 0;}
-        li{list-style: none;}
-        a {text-decoration: none; color: #000;}
-        img {vertical-align: top;}
-        html, body {height: 100%;}
-
-       /*  html, body {height: 100%;} 배경 사이즈 크기 맞추기 위함*/
-
-       /*  body{overflow-y: hidden;} /* 이미지 크기가 커서 스크롤 바가 생길 경우 */
-       /* vh는 이미지가 작을 때 (높이) 사용 */
-  
-        @font-face {
-            font-family: 'GyeonggiMillenniumBackground';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Regular.woff') format('woff');
-            font-weight: 400;
-            font-display: block;
-        }
-
-        @font-face {
-            font-family: 'GyeonggiMillenniumBackground';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Batang_Bold.woff') format('woff');
-            font-weight: 700;
-            font-display: block;
-        }
-        body {font-family: 'GyeonggiMillenniumBackground'; overflow: hidden; background: #14142d;}
-        body::before {content: ""; position: fixed; inset: 0; background: radial-gradient(circle at 48% 22%, rgba(226, 204, 255, 0.28), transparent 34%), radial-gradient(circle at 14% 82%, rgba(142, 164, 235, 0.22), transparent 30%), radial-gradient(circle at 88% 32%, rgba(255, 221, 158, 0.12), transparent 26%), linear-gradient(180deg, rgba(17, 17, 45, 0.04), rgba(15, 14, 36, 0.3)); pointer-events: none; z-index: 3; animation: ambientGlow 12s ease-in-out infinite alternate;}
-        @keyframes ambientGlow {
-            0% {opacity: 0.82; transform: scale(1);}
-            100% {opacity: 1; transform: scale(1.02);}
-        }
-        .opening {
-            position: fixed;
-            inset: 0;
-            z-index: 20;
-            display: grid;
-            place-items: center;
-            background: radial-gradient(circle at 50% 46%, rgba(226, 204, 255, 0.2), transparent 28%),
-                        #11112b;
-            animation: openingFade 2.2s ease 1.9s forwards;
-            pointer-events: none;
-        }
-
-        .opening img {
-            width: 96px;
-            opacity: 0;
-            animation: logoBreathe 1.9s ease forwards;
-            filter: drop-shadow(0 0 28px rgba(255, 221, 158, 0.22));
-        }
-
-        .opening::after {
-            content: "";
-            position: absolute;
-            width: 156px;
-            height: 156px;
-            border: 1px solid rgba(255, 221, 158, 0.24);
-            border-radius: 50%;
-            animation: openingRing 1.9s ease forwards;
-        }
-
-        @keyframes logoBreathe {
-            0% {opacity: 0; transform: scale(1.18); filter: blur(5px) drop-shadow(0 0 18px rgba(255, 221, 158, 0.12));}
-            34% {opacity: 1; transform: scale(1);}
-            100% {opacity: 0.86; transform: scale(0.62); filter: blur(0) drop-shadow(0 0 28px rgba(255, 221, 158, 0.2));}
-        }
-
-        @keyframes openingRing {
-            0% {opacity: 0; transform: scale(0.72);}
-            42% {opacity: 0.75; transform: scale(1);}
-            100% {opacity: 0; transform: scale(1.34);}
-        }
-
-        @keyframes openingFade {
-            to {opacity: 0; visibility: hidden;}
-        }
-        .skip-opening .opening {display: none;}
-        .wrap {position: relative; min-height: 100vh; --drift-x: 0px; --drift-y: 0px;}
-        .bg_box {position: absolute; top: 0; width: 100%; height: 100%; overflow: hidden;}
-
-        .bg_box .bg1 .sky { position: absolute; left: 50%; top: 50%; transform: translate(calc(-50% + var(--drift-x)), calc(-50% + var(--drift-y))); animation: skyBreathe 14s ease-in-out infinite alternate; transform-origin: center center; opacity: 0.9; transition: transform 0.8s ease-out;}
-        @keyframes skyBreathe {
-            from {opacity: 0.82; filter: saturate(0.92) brightness(0.95);}
-            to {opacity: 0.96; filter: saturate(1.04) brightness(1.02);}
-        }
-        
-        .bg_box .bg1 .img2 { width: 100%; height: 100vh; position: absolute;left: 0;top: 0;z-index: 2; animation: bg1 15s forwards; animation-delay: 1ms;}
-        /* @keyframes bg1 {
-            0% {height: 150%;}
-            10%{height: 100%;}
-        } */
-
-
-        header {position: absolute; max-width: 1440px; left: 50%; top: 22px; transform: translateX(-50%); display: flex; justify-content: space-between; align-items:center; width: min(1440px, calc(100% - 96px)); padding: 0 8px; box-sizing: border-box; z-index: 5;}
-        header h1 {width: 58px;}
-        header h1 img {width: 100%;}
-        header nav {}
-        header nav .gnb {display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 28px;}
-        header nav .gnb li {font-size: 16px; letter-spacing: 0.05em; transition: 0.25s; text-shadow: 0 0 18px rgba(8, 7, 24, 0.95), 0 0 28px rgba(226, 204, 255, 0.2); white-space: nowrap;}
-        header nav .gnb li a{position: relative; color: rgba(248, 243, 255, 0.82); display: block; padding: 8px 12px 11px; border-radius: 999px; transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s ease;}
-        header nav .gnb li a::after {content: ""; position: absolute; left: 50%; bottom: 2px; width: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 221, 158, 0.92), transparent); transform: translateX(-50%); opacity: 0; transition: width 0.35s ease, opacity 0.35s ease;}
-        header nav .gnb li:hover a {color: #ffdd9e; text-shadow: 0 0 18px rgba(255, 221, 158, 0.28); transform: translateY(-2px);}
-        header nav .gnb li:hover a::after {width: 100%; opacity: 1;}
-        header audio {width: 138px; height: 24px; border-radius: 999px; opacity: 0.52; background: transparent; filter: invert(1) sepia(10%) saturate(45%) hue-rotate(210deg) brightness(0.98); box-shadow: none; transition: 0.3s;}
-        header audio:hover {opacity: 0.82;}
-        header audio::-webkit-media-controls-panel {background: rgba(22, 19, 45, 0.04);}
-        header audio::-webkit-media-controls-current-time-display,
-        header audio::-webkit-media-controls-time-remaining-display {font-size: 10px;}
-        header audio::-webkit-media-controls-play-button {filter: brightness(0.62) saturate(50%);}
-
-        .textbox {width: min(1240px, calc(100% - 96px)); position: absolute; left: 50%; top: 27%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 42px; text-align: center; z-index: 4; opacity: 1; }
-
-        .textbox h1 {width: min(1180px, 100%); font-family: 'Cormorant Garamond', serif; font-size: clamp(58px, 6vw, 108px); font-weight: 500; letter-spacing: 0.055em; line-height: 0.96; padding: 0; color: transparent; position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; background: linear-gradient(100deg, rgba(244, 239, 251, 0.76), #fff, rgba(255, 221, 158, 0.86), rgba(244, 239, 251, 0.86)); background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; text-shadow: 0 0 28px rgba(228, 222, 234, 0.28); animation: titleBreath 12s ease-in-out infinite alternate, titleLight 18s ease-in-out infinite;}
-        .textbox h1 span {display: block; width: 100%; text-align: center;}
-        /* .textbox h1 span {gap: 10px;} */
-        .textbox a {font-size: 14px; letter-spacing: 0.14em; line-height: 1.45; padding: 11px 30px; color: #f7f2ff; border: 1px solid rgba(232, 222, 255, 0.5); border-radius: 999px; background: linear-gradient(120deg, rgba(246, 231, 199, 0.16), rgba(79, 73, 121, 0.34), rgba(255, 221, 158, 0.13)); background-size: 220% 100%; box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.07), 0 0 24px rgba(174, 159, 225, 0.26); backdrop-filter: blur(8px); transition: color 0.6s ease, border-color 0.6s ease, background 0.6s ease, box-shadow 0.6s ease, transform 0.6s ease; animation: buttonBreath 10s ease-in-out infinite alternate, buttonLight 16s ease-in-out infinite; }
-        .textbox a:hover {color: #fff4d9; border-color: rgba(255, 216, 151, 0.86); background: linear-gradient(135deg, rgba(255, 210, 139, 0.25), rgba(53, 48, 95, 0.66)); transform: translateY(-3px); box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 0 36px rgba(255, 205, 130, 0.38);}
-        .container { position: absolute; left: 50%; top: 70%; transform: translateX(-50%); width: min(1440px, calc(100% - 96px)); display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; z-index: 4; opacity: 1; }
-        .container .content {line-height: 28px;}
-        .container .content p {font-size: 14px; letter-spacing: -0.04em; color: rgba(248, 243, 255, 0.86); padding: 8px; text-shadow: 0 0 18px rgba(20, 18, 42, 0.8); transition: opacity 1.2s ease;}
-
-        @keyframes titleBreath {
-            from {text-shadow: 0 0 24px rgba(228, 222, 234, 0.26), 0 0 72px rgba(170, 155, 224, 0.08);}
-            to {text-shadow: 0 0 36px rgba(244, 239, 251, 0.46), 0 0 96px rgba(255, 221, 158, 0.12);}
-        }
-
-        @keyframes titleLight {
-            0%, 100% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-        }
-
-        @keyframes buttonBreath {
-            from {border-color: rgba(232, 222, 255, 0.42); box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.06), 0 0 22px rgba(174, 159, 225, 0.22);}
-            to {border-color: rgba(255, 221, 158, 0.64); box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.09), 0 0 34px rgba(255, 221, 158, 0.22);}
-        }
-
-        @keyframes buttonLight {
-            0%, 100% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-        }
-
-        .star_box{}
-        .star_box .star1{width: 100%; position: absolute; background: url("image/star.png"); height: 100vh; left: 0;top: 0; transform: translate(calc(var(--drift-x) * -0.45), calc(var(--drift-y) * -0.45)); animation: star1 28s infinite linear; background-size: 62%; opacity: 0.46; mix-blend-mode: screen; filter: blur(0.4px); pointer-events: none; z-index: 3; transition: transform 0.8s ease-out; }
-
-        @keyframes star1 {
-            0% {background-position: -120px -160px;}
-            50% {opacity: 0.34;}
-            100% {background-position: 180px 520px;}
-        }
-
-        /* .star_box .star2{width: 100%; position: absolute; background: url("image/star.png"); height: 100vh; left: 0;top: 0; animation: star2 3s infinite linear; background-size: 30%;}
-
-        @keyframes star2 {
-            0% {background-position: 0 0;}
-            100% {background-position: 400px 900px;}
-        } */
-
-/*         .star_box .star3{width: 100%; position: absolute; background: url("image/star.png"); height: 100vh; left: 0;top: 0; animation: star3 5s infinite linear;}
-
-        @keyframes star3 {
-            0% {background-position: 0 0;}
-            100% {background-position: 1000px 900px;}
-        } */
-
-
-
-
-        /* .textbox li span:nth-child(2){animation-delay:} */
-
-        @media (max-width: 980px) {
-            body {overflow-y: auto;}
-            .wrap {min-height: 100vh;}
-            header {width: calc(100% - 32px); top: 16px; flex-wrap: wrap; justify-content: center; gap: 10px 18px;}
-            header h1 {width: 54px;}
-            header nav {order: 3; width: 100%;}
-            header nav .gnb {justify-content: center; gap: 10px;}
-            header nav .gnb li {font-size: 16px;}
-            header nav .gnb li a {padding: 6px 10px;}
-            header audio {width: 128px;}
-            .textbox {top: 28%; gap: 28px; align-items: center; text-align: center;}
-            .textbox h1 {font-size: clamp(38px, 9vw, 62px); letter-spacing: 0.035em; gap: 10px; align-items: center;}
-            .textbox h1 span {text-align: center;}
-            .textbox h1 span:nth-child(2) {margin-left: 0;}
-            .textbox a {font-size: 13px; padding: 10px 24px;}
-            .container {top: 66%; width: calc(100% - 32px);}
-            .container .content {line-height: 30px;}
-            .container .content p {font-size: 13px;}
-        }
-
-        @media (max-width: 560px) {
-            header nav .gnb {gap: 2px;}
-            header nav .gnb li {font-size: 14px;}
-            .textbox {top: 30%;}
-            .textbox h1 {font-size: 34px; letter-spacing: 0.02em;}
-            .textbox h1 span {display: block;}
-            .container {top: 64%;}
-        }
-    </style>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <div class="opening" aria-hidden="true">
-        <img src="image/logo1.png" alt="">
+    <div class="site-background" aria-hidden="true">
+        <div class="background-sky"></div>
+        <div class="background-image"></div>
+        <div class="star-layer"></div>
     </div>
-    <div class="wrap">
-        
-        <header>
-            <h1><a href="index.html"><img src="image/logo1.png" alt="Inner Stillness"></a></h1>
-            <nav>
-                <ul class="gnb">
-                    <li><a href="study.html">서제</a></li>
-                    <li><a href="works.html">작품</a></li>
-                    <li><a href="records.html">기록</a></li>
-                    <li><a href="scenery.html">사운드</a></li>
-                    <li><a href="connect.html">연결</a></li>
-                </ul>
-            </nav>
-            <audio src="audio/massobeats_dainty.m4a" controls></audio>
-        </header>
 
+    <header class="site-header">
+        <h1><a href="#home"><img src="image/logo1.png" alt="Inner Stillness"></a></h1>
+        <nav aria-label="주요 메뉴">
+            <ul class="gnb">
+                <li><a href="#study">서재</a></li>
+                <li><a href="#works">작품</a></li>
+                <li><a href="#records">기록</a></li>
+                <li><a href="#sound">사운드</a></li>
+                <li><a href="#connect">연결</a></li>
+            </ul>
+        </nav>
+        <audio src="audio/massobeats_dainty.m4a" controls></audio>
+    </header>
 
-        <div class="textbox">  
-            <h1>
-                <span>MEET YOUR</span> 
-                <span>INNER STILLNESS</span> 
-            </h1>
-            <a href="study.html">S T A R T<br>M E D I T A T I O N</a>
-        </div>
-        <div class="container">
-            <div class="content">
-                <p>우리는 모두 각자의 내면에 광활한 우주를 품고 있습니다.  <br> 어둠 속에 숨겨진 진정한 나를 마주하고, 쏟아지는 별빛 속에서 답을 찾아보세요. <br>당신의 깊은 내면이 들려주는 고요한 이야기에 집중할 시간입니다.</p>
+    <main>
+        <section class="section home-section" id="home">
+            <div class="container home-container">
+                <div class="home-copy">
+                    <h2><span>MEET YOUR</span><span>INNER STILLNESS</span></h2>
+                    <a class="home-start" href="#study">S T A R T<br>M E D I T A T I O N</a>
+                </div>
+                <div class="home-message">
+                    <p data-home-message>우리는 모두 각자의 내면에 광활한 우주를 품고 있습니다.<br>어둠 속에 숨겨진 진정한 나를 마주하고, 쏟아지는 별빛 속에서 답을 찾아보세요.<br>당신의 깊은 내면이 들려주는 고요한 이야기에 집중할 시간입니다.</p>
+                </div>
             </div>
-        </div>
-        <div class="bg_box">
-            <div class="bg1">
-                <div class="sky"><img src="image/bg1.png" alt=""></div>
-                <img src="image/bg2.png" alt="" class="img2">
+        </section>
+
+        <section class="section" id="study">
+            <div class="container">
+                <section id="quote-anxiety" class="quote-modal">
+                    <div class="quote-book">
+                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
+                        <small>불안할 때 펼치는 한 구절</small>
+                        <strong class="quote-title">고요의 문장들</strong>
+                        <p>“마음이 먼저 달려가도 괜찮습니다. 불안은 나를 망가뜨리려 온 것이 아니라, 잠시 멈추어 살피라는 작은 신호일지도 모릅니다.”</p>
+                        <p>발바닥이 바닥에 닿는 감각을 느끼고, 숨이 들어오고 나가는 길을 천천히 따라가세요. 지금 해야 할 일은 전부가 아니라 단 하나, 이 순간으로 돌아오는 일입니다.</p>
+                        <span>『고요의 문장들』, page 07</span>
+                    </div>
+                </section>
+
+                <section id="quote-night" class="quote-modal">
+                    <div class="quote-book">
+                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
+                        <small>잠들기 전 펼치는 한 구절</small>
+                        <strong class="quote-title">밤에게 맡긴 마음</strong>
+                        <p>“오늘을 전부 해결하지 않아도 밤은 찾아옵니다. 남은 마음은 내일의 빛에게 맡겨도 됩니다.”</p>
+                        <p>잘 해낸 일 하나와 견뎌낸 일 하나를 떠올려보세요. 완벽하지 않았던 장면까지도 오늘의 나를 지나온 증거로 놓아두면, 몸은 조금 더 편안히 잠을 기억합니다.</p>
+                        <span>『밤에게 맡긴 마음』, page 12</span>
+                    </div>
+                </section>
+
+                <section id="quote-focus" class="quote-modal">
+                    <div class="quote-book">
+                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
+                        <small>집중이 필요할 때 펼치는 한 구절</small>
+                        <strong class="quote-title">하나의 순간</strong>
+                        <p>“해야 할 모든 일을 한꺼번에 들지 말고, 지금 손에 닿은 하나의 순간만 바라봅니다.”</p>
+                        <p>시선을 한 곳에 두고 가장 작은 첫 행동을 정하세요. 생각이 흩어질 때마다 실패라고 부르지 말고, 다시 돌아오는 연습이 한 번 더 쌓였다고 여겨도 좋습니다.</p>
+                        <span>『하나의 순간』, page 18</span>
+                    </div>
+                </section>
+
+                <section id="quote-heavy" class="quote-modal">
+                    <div class="quote-book">
+                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
+                        <small>마음이 무거울 때 펼치는 한 구절</small>
+                        <strong class="quote-title">내려놓는 연습</strong>
+                        <p>“무거운 마음은 나약함이 아니라 오래 버틴 마음의 무게입니다. 오늘은 조금 내려놓아도 됩니다.”</p>
+                        <p>모든 감정을 설명하려 애쓰지 않아도 괜찮습니다. 이름 붙일 수 없는 마음도 잠시 곁에 앉혀두고, 내가 지금 받을 수 있는 가장 작은 다정함을 골라보세요.</p>
+                        <span>『내려놓는 연습』, page 24</span>
+                    </div>
+                </section>
+
+                <div class="hero hero-study">
+                    <div class="reading-copy">
+                        <p class="eyebrow">Quiet Reading</p>
+                        <h2>Care<br>Sentences</h2>
+                        <p>지금의 마음에 가까운 문장을 하나 골라 천천히 펼쳐보세요. 문장은 선택지가 아니라, 잠시 머물 수 있는 작은 페이지처럼 열립니다.</p>
+                    </div>
+                    <div class="reading-path" aria-label="감정별 문장">
+                        <a class="reading-item" href="#quote-anxiety"><em>01</em><strong>불안할 때</strong><span>발바닥의 감각으로 돌아오는 문장</span><i aria-hidden="true">→</i></a>
+                        <a class="reading-item" href="#quote-night"><em>02</em><strong>잠들기 전</strong><span>오늘을 밤에게 천천히 맡기는 문장</span><i aria-hidden="true">→</i></a>
+                        <a class="reading-item" href="#quote-focus"><em>03</em><strong>집중이 필요할 때</strong><span>하나의 순간만 손에 쥐는 문장</span><i aria-hidden="true">→</i></a>
+                        <a class="reading-item" href="#quote-heavy"><em>04</em><strong>마음이 무거울 때</strong><span>오래 버틴 마음을 내려놓는 문장</span><i aria-hidden="true">→</i></a>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="star_box">
-            <div class="star1"></div>
-            <div class="star2"></div>
-        </div>
-    </div>
-    <script>
-        const wrap = document.querySelector('.wrap');
-        const opening = document.querySelector('.opening');
-        const message = document.querySelector('.container .content p');
-        const messages = [
-            '우리는 모두 각자의 내면에 광활한 우주를 품고 있습니다.<br>어둠 속에 숨겨진 진정한 나를 마주하고, 쏟아지는 별빛 속에서 답을 찾아보세요.<br>당신의 깊은 내면이 들려주는 고요한 이야기에 집중할 시간입니다.',
-            '잠깐 멈추면 마음의 방향이 조금 더 선명해집니다.<br>오늘의 감정과 호흡을 천천히 살피며, 나를 가꾸는 시간을 시작해보세요.<br>고요는 멀리 있는 것이 아니라 지금 돌아오는 감각입니다.',
-            '내면을 돌보는 일은 거창하지 않아도 괜찮습니다.<br>한 문장, 한 번의 숨, 작은 기록이 오늘의 나를 부드럽게 정리합니다.<br>필요한 만큼 천천히 머물러보세요.'
-        ];
-        let messageIndex = 0;
-        let messageTimer;
+        <section class="section" id="works">
+            <div class="container">
+                <div class="page-section session-showcase works-studio">
+                    <article class="session-feature">
+                        <div>
+                            <p class="section-label">Guided Care</p>
+                            <h3>3분<br>마음 정지</h3>
+                        </div>
+                        <p>바쁜 생각을 잠시 멈추고,<br>이 순간과 나에게 3분의 온기를 건네보세요.</p>
+                        <div class="session-meta"><span>3 min</span><span>Beginner</span></div>
+                        <a class="session-start" href="#routine-01"><span aria-hidden="true"></span>시작하기</a>
+                    </article>
+                    <div class="session-focus" aria-label="작품 호흡 안내">
+                        <div class="breath-orb"><span></span><b>BREATHE</b></div>
+                        <p>천천히 커지는 빛에 맞춰 시선을 낮추고, 한 번의 숨을 길게 놓습니다.</p>
+                    </div>
+                    <div class="session-list">
+                        <article id="routine-01" class="session-item">
+                            <span class="session-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 6v7"></path><path d="M11 11.5c-2.4 1.5-4 4.2-4 7.2 0 4.7 4 7.3 9 7.3s9-2.6 9-7.3c0-3-1.6-5.7-4-7.2"></path><path d="M12 18h8"></path><path d="M16 14v8"></path></svg></span>
+                            <b>01</b>
+                            <div><strong>3분 마음 정지</strong><p>지친 순간에 가장 짧게 돌아오는 루틴.</p><ol class="routine-detail"><li>어깨 힘을 빼고 시선을 낮춥니다.</li><li>네 박자로 들이쉬고 여섯 박자로 내쉽니다.</li><li>지금 필요한 감정을 한 단어로 고릅니다.</li></ol></div>
+                            <em>3 min</em>
+                        </article>
+                        <article class="session-item">
+                            <span class="session-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M9 13c0-3 2.6-5.5 5.9-5.5 4.8 0 8.1 3.9 8.1 8.7 0 5-3.8 8.3-8.3 8.3-2.7 0-5.1-1.2-6.7-3.1"></path><path d="M14.5 12.2c2.7.3 4.8 2.6 4.8 5.4 0 2.5-1.7 4.6-4.1 5.2"></path><path d="M7 18.2h5.2"></path></svg></span>
+                            <b>02</b>
+                            <div><strong>밤의 감정 정리</strong><p>잠들기 전 남은 마음을 낮추는 루틴.</p><ol class="routine-detail"><li>오늘 오래 남은 장면을 떠올립니다.</li><li>내가 애쓴 부분을 한 가지 인정합니다.</li><li>내일로 넘길 마음을 천천히 내려놓습니다.</li></ol></div>
+                            <em>10 min</em>
+                        </article>
+                        <article class="session-item">
+                            <span class="session-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 5l9 11-9 11-9-11 9-11z"></path><path d="M16 10v12"></path><path d="M11 16h10"></path></svg></span>
+                            <b>03</b>
+                            <div><strong>부드러운 집중</strong><p>흩어진 생각을 하나씩 정리하는 루틴.</p><ol class="routine-detail"><li>오늘 가장 중요한 한 가지를 고릅니다.</li><li>주변 소리를 세 번 천천히 듣습니다.</li><li>필요한 첫 행동을 작게 정합니다.</li></ol></div>
+                            <em>7 min</em>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        window.addEventListener('pointermove', (event) => {
-            const x = (event.clientX / window.innerWidth - 0.5) * 18;
-            const y = (event.clientY / window.innerHeight - 0.5) * 14;
-            wrap.style.setProperty('--drift-x', `${x}px`);
-            wrap.style.setProperty('--drift-y', `${y}px`);
-        });
+        <section class="section" id="records">
+            <div class="container">
+                <div class="hero hero-records">
+                    <div><p class="eyebrow">Self Archive</p><h2>Mood<br>Map</h2></div>
+                    <div class="intro-card"><span>기록</span><strong>오늘의 기분을 고르고 한 문장으로 남기는 공간</strong><p>감정을 선택하면 그 마음에 맞는 질문과 돌봄 행동이 열립니다. 짧게 적고, 오늘의 나를 조금 더 선명하게 확인해보세요.</p></div>
+                </div>
 
-        const startMessageRotation = () => {
-            if (messageTimer) {
-                return;
-            }
+                <div class="page-section mood-dashboard">
+                    <article class="mood-entry" aria-label="오늘의 감정 기록 작성">
+                        <div class="mood-entry-head">
+                            <p class="section-label">Mood Check-in</p>
+                            <h3>지금 마음을 고르고, 오늘을 한 문장으로 붙잡아보세요.</h3>
+                            <ol class="mood-steps" aria-label="기록 순서"><li class="active">감정 선택</li><li>문장 기록</li><li>돌봄 확인</li></ol>
+                        </div>
+                        <div class="mood-entry-body">
+                            <div class="mood-options" role="listbox" aria-label="감정 목록">
+                                <button class="active" type="button" data-mood="calm" aria-selected="true">평온</button>
+                                <button type="button" data-mood="anxious" aria-selected="false">불안</button>
+                                <button type="button" data-mood="tired" aria-selected="false">무기력</button>
+                                <button type="button" data-mood="sad" aria-selected="false">슬픔</button>
+                                <button type="button" data-mood="grateful" aria-selected="false">감사</button>
+                                <button type="button" data-mood="excited" aria-selected="false">기대</button>
+                            </div>
+                            <label class="mood-writing">
+                                <span data-mood-prompt>오늘 평온을 지켜준 순간은 무엇이었나요?</span>
+                                <textarea data-mood-text rows="5" placeholder="예: 오후에 천천히 걸으면서 마음이 조금 가라앉았다."></textarea>
+                            </label>
+                            <button class="mood-save" type="button">오늘 기록 남기기</button>
+                            <p class="mood-save-status" data-save-status>아직 저장된 문장이 없습니다.</p>
+                        </div>
+                    </article>
 
-            messageTimer = setInterval(() => {
-                messageIndex = (messageIndex + 1) % messages.length;
-                message.style.opacity = '0';
-                setTimeout(() => {
-                    message.innerHTML = messages[messageIndex];
-                    message.style.opacity = '1';
-                }, 1200);
-            }, 8200);
-        };
+                    <article class="mood-today" aria-live="polite">
+                        <p class="section-label">Selected Mood</p>
+                        <strong data-mood-title>평온</strong>
+                        <span data-mood-subtitle>마음의 속도가 안정된 상태</span>
+                        <p data-mood-copy>큰 파도는 잦아들고, 지금 필요한 것을 차분히 바라볼 수 있는 날입니다. 이 상태에서는 무리한 확장보다 리듬을 유지하는 선택이 잘 맞습니다.</p>
+                        <div class="journal-line">오늘 나를 아껴줄 행동은 <b data-mood-action>천천히 걷기</b> 입니다.</div>
+                    </article>
 
-        opening.addEventListener('animationstart', (event) => {
-            if (event.animationName === 'openingFade') {
-                document.body.classList.add('page-ready');
-                startMessageRotation();
-            }
-        });
+                    <article class="mood-week">
+                        <p class="section-label">Signal</p>
+                        <div class="mood-river" aria-label="일주일 감정 흐름">
+                            <span style="--level:48%" data-level="0"><b>Mon</b></span><span style="--level:72%" data-level="1"><b>Tue</b></span><span style="--level:38%" data-level="2"><b>Wed</b></span><span style="--level:84%" data-level="3"><b>Thu</b></span><span style="--level:62%" data-level="4"><b>Fri</b></span><span style="--level:78%" data-level="5"><b>Sat</b></span><span style="--level:68%" data-level="6"><b>Sun</b></span>
+                        </div>
+                        <div class="mood-insight"><strong data-mood-signal-title>회복 신호</strong><p data-mood-signal>평온한 날에는 결정의 수를 줄이고 익숙한 루틴을 유지할수록 안정감이 오래 이어집니다.</p></div>
+                        <ul class="mood-care-list" aria-label="선택한 감정에 맞는 돌봄 제안">
+                            <li><span>01</span><p data-note="0">몸의 긴장을 살피고 호흡을 길게 가져가면 하루의 시작이 부드러워집니다.</p></li>
+                            <li><span>02</span><p data-note="1">이미 잘 유지하고 있는 리듬 하나를 의식적으로 반복해보세요.</p></li>
+                            <li><span>03</span><p data-note="2">오늘의 나에게 필요한 말은 “이 정도의 고요도 충분하다”입니다.</p></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-        opening.addEventListener('animationend', (event) => {
-            if (event.animationName === 'openingFade') {
-                opening.remove();
-            }
-        });
+        <section class="section" id="sound">
+            <div class="container">
+                <div class="hero hero-sound">
+                    <div><p class="eyebrow">Soundscape</p><h2>Peaceful<br>Rooms</h2></div>
+                    <div class="intro-card"><span>사운드</span><strong>장면과 소리로 마음을 쉬게 하는 방</strong><p>원하는 분위기를 선택하면 화면의 장면과 백색소음이 함께 흐르는 페이지입니다.</p></div>
+                </div>
 
-        if (document.documentElement.classList.contains('skip-opening')) {
-            document.body.classList.add('page-ready');
-            opening.remove();
-            startMessageRotation();
-        }
-    </script>
+                <div class="page-section sound-room" aria-label="선택형 사운드스케이프">
+                    <input type="radio" name="soundscape" id="sound-rain" checked>
+                    <input type="radio" name="soundscape" id="sound-night">
+                    <input type="radio" name="soundscape" id="sound-wind">
+                    <div class="sound-visual">
+                        <div class="sound-orb" aria-hidden="true"></div>
+                        <div class="frequency-field" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <article>
+                            <span>Breath Frequency</span>
+                            <h3>소리의 리듬에 맞춰 호흡을 늦추세요</h3>
+                            <p>선택한 사운드에 따라 파동의 간격과 속도가 달라집니다. 눈은 흐름을 따라가고, 호흡은 조금씩 길어집니다.</p>
+                            <audio src="audio/massobeats_dainty.m4a" controls></audio>
+                        </article>
+                    </div>
+                    <div class="sound-options">
+                        <label for="sound-rain"><strong>Soft Rain</strong><span>생각을 천천히 씻어내고 싶을 때</span></label>
+                        <label for="sound-night"><strong>Star Night</strong><span>잠들기 전 몸을 이완하고 싶을 때</span></label>
+                        <label for="sound-wind"><strong>Slow Wind</strong><span>답답한 마음에 공간이 필요할 때</span></label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="connect">
+            <div class="container">
+                <div class="hero hero-contact">
+                    <div><p class="eyebrow">Stay Connected</p><h2>Gentle<br>Contact</h2></div>
+                    <div class="intro-card"><span>연결</span><strong>고요한 연결을 시작하는 공간</strong><p>명상 콘텐츠와 브랜드 경험에 관한 이야기를 차분하게 이어갑니다.</p></div>
+                </div>
+
+                <div class="page-section routine-flow">
+                    <aside class="routine-intro">
+                        <p class="section-label">Routine Generator</p>
+                        <h3>Personal<br>Stillness</h3>
+                        <p>오늘의 성향과 머무르고 싶은 시간대를 고르면 매번 다른 웹 루틴을 조합합니다.</p>
+                    </aside>
+
+                    <div class="routine-picker" aria-label="성향과 시간대별 루틴 선택">
+                        <div>
+                            <span>성향</span>
+                            <div class="routine-options" data-routine-group="mood">
+                                <button type="button" class="active" data-value="calm">차분</button>
+                                <button type="button" data-value="focus">집중</button>
+                                <button type="button" data-value="restore">회복</button>
+                            </div>
+                        </div>
+                        <div>
+                            <span>카테고리</span>
+                            <div class="routine-options" data-routine-group="time">
+                                <button type="button" class="active" data-value="morning">아침</button>
+                                <button type="button" data-value="day">낮</button>
+                                <button type="button" data-value="night">밤</button>
+                            </div>
+                        </div>
+                        <button type="button" class="routine-refresh">새 루틴 생성</button>
+                    </div>
+
+                    <div class="routine-result" aria-live="polite">
+                        <article class="routine-card"><span>01</span><div><strong data-routine-title="0">감각 열기</strong><p data-routine-copy="0">창가 앞에서 세 번 숨을 고르고 오늘의 몸 상태를 확인합니다.</p></div></article>
+                        <article class="routine-card"><span>02</span><div><strong data-routine-title="1">시선 쉬기</strong><p data-routine-copy="1">화면 밝기를 낮추고 한 지점에 시선을 둔 채 호흡을 느낍니다.</p></div></article>
+                        <article class="routine-card"><span>03</span><div><strong data-routine-title="2">한 줄 남기기</strong><p data-routine-copy="2">지금 가장 또렷한 감정을 짧은 문장으로 적고 천천히 닫습니다.</p></div></article>
+                    </div>
+                </div>
+
+                <div class="wide-note">
+                    <p>깊은 밤의 별처럼, 연결은 크지 않아도 충분히 선명할 수 있습니다.</p>
+                    <a class="soft-button" href="#home">BACK TO STILLNESS</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
