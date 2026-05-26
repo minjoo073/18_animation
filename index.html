@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inner Stillness | Meditation Space</title>
+    <title>Inner Stillness | 오늘의 호흡 기록</title>
+    <meta name="description" content="한 번의 호흡으로 시작해 오늘의 감각을 기록하는 개인 명상 공간">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -12,281 +13,143 @@
     <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
-    <div class="site-background" aria-hidden="true">
-        <div class="background-sky"></div>
-        <div class="background-image"></div>
-        <div class="star-layer"></div>
+<body class="is-loading">
+    <div class="page-loader" data-loader role="status" aria-label="명상 공간을 준비하는 중">
+        <div class="loader-visual" aria-hidden="true">
+            <img class="loader-halo" src="image/layers/aura-halo.webp" alt="">
+            <img class="loader-core" src="image/layers/breath-core.webp" alt="">
+            <img class="loader-logo" src="image/logo1.png" alt="">
+        </div>
+        <p class="loader-name">INNER STILLNESS</p>
+        <div class="loader-line" aria-hidden="true"><span></span></div>
+        <p class="loader-copy">호흡의 자리를 준비합니다</p>
     </div>
-
     <header class="site-header">
-        <h1><a href="#home"><img src="image/logo1.png" alt="Inner Stillness"></a></h1>
-        <nav aria-label="주요 메뉴">
-            <ul class="gnb">
-                <li><a href="#study">서재</a></li>
-                <li><a href="#works">작품</a></li>
-                <li><a href="#records">기록</a></li>
-                <li><a href="#sound">사운드</a></li>
-                <li><a href="#connect">연결</a></li>
-            </ul>
+        <a class="brand" href="#home">
+            <img src="image/logo1.png" alt="" aria-hidden="true">
+            <span>INNER STILLNESS</span>
+        </a>
+        <nav aria-label="명상 흐름">
+            <a href="#breathe" data-nav="breathe">호흡</a>
+            <a href="#sense" data-nav="sense">감지</a>
+            <a href="#record" data-nav="record">기록</a>
         </nav>
-        <audio src="audio/massobeats_dainty.m4a" controls></audio>
+        <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false">
+            <i aria-hidden="true"></i><span data-sound-label>SOUND OFF</span>
+        </button>
+        <audio data-ambient-audio src="audio/massobeats_dainty.m4a" preload="none" loop></audio>
     </header>
 
     <main>
-        <section class="section home-section" id="home">
-            <div class="container home-container">
-                <div class="home-copy">
-                    <h2><span>MEET YOUR</span><span>INNER STILLNESS</span></h2>
-                    <a class="home-start" href="#study">S T A R T<br>M E D I T A T I O N</a>
+        <section class="hero" id="home">
+            <div class="hero-surface" aria-hidden="true"></div>
+            <div class="hero-layers" aria-hidden="true">
+                <img class="hero-dust" src="image/layers/aura-dust.webp" alt="">
+                <img class="hero-halo" src="image/layers/aura-halo.webp" alt="">
+                <img class="hero-figure" src="image/layers/aura-figure.webp" alt="">
+                <img class="hero-core" src="image/layers/breath-core.webp" alt="">
+            </div>
+            <div class="hero-shade" aria-hidden="true"></div>
+            <div class="hero-content">
+                <p class="catalog-label">A PRIVATE BREATH PRACTICE / 01</p>
+                <h1>빛이 닿는 자리에서<br>숨을 한 번 고릅니다.</h1>
+                <p class="hero-lead">오늘의 마음을 해결하려 하지 않고,<br>몸 안에서 먼저 느껴지는 온도와 움직임을 기록합니다.</p>
+                <a class="start-link" href="#breathe">시작하기 <span aria-hidden="true">↓</span></a>
+            </div>
+            <p class="hero-caption">INNER BODY / A STUDY IN QUIET ENERGY</p>
+        </section>
+
+        <div class="practice-flow">
+            <div class="flow-atmosphere" aria-hidden="true">
+                <img class="flow-aurora-mid" src="image/backgrounds/aurora-mid.webp" alt="" loading="lazy" decoding="async">
+                <img class="flow-aurora-low" src="image/backgrounds/aurora-low.webp" alt="" loading="lazy" decoding="async">
+            </div>
+        <section class="flow-section breathe-section" id="breathe" data-section="breathe">
+            <div class="section-aura breathe-aura" aria-hidden="true">
+                <img class="aura-orb" src="image/layers/breath-core.webp" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="section-heading" data-reveal>
+                <p class="catalog-label">01 / BREATHE</p>
+                <h2>먼저 몸의 속도를<br>조금 늦춥니다.</h2>
+            </div>
+            <div class="breath-practice" data-reveal>
+                <div class="breath-display" data-breath-display>
+                    <img class="breath-core" src="image/layers/breath-core.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    <p data-breath-phase>준비되면 시작하세요</p>
+                    <strong data-breath-time>01:00</strong>
+                    <span>들이쉬고 · 머물고 · 내쉽니다</span>
                 </div>
-                <div class="home-message">
-                    <p data-home-message>우리는 모두 각자의 내면에 광활한 우주를 품고 있습니다.<br>어둠 속에 숨겨진 진정한 나를 마주하고, 쏟아지는 별빛 속에서 답을 찾아보세요.<br>당신의 깊은 내면이 들려주는 고요한 이야기에 집중할 시간입니다.</p>
+                <div class="breath-controls" aria-label="호흡 시간 선택">
+                    <button class="active" type="button" data-duration="60" aria-pressed="true">1분</button>
+                    <button type="button" data-duration="180" aria-pressed="false">3분</button>
+                    <button type="button" data-duration="300" aria-pressed="false">5분</button>
+                    <button class="practice-start" type="button" data-breath-start>호흡 시작</button>
+                </div>
+                <p class="practice-note">화면을 바라보지 않아도 괜찮습니다. 턱과 어깨를 내려놓고, 숨이 닿는 곳만 느껴보세요.</p>
+            </div>
+        </section>
+
+        <section class="flow-section sense-section" id="sense" data-section="sense">
+            <div class="section-aura sense-aura" aria-hidden="true">
+                <img class="aura-ring" src="image/layers/aura-halo.webp" alt="" loading="lazy" decoding="async">
+                <img class="aura-orb" src="image/layers/breath-core.webp" alt="" loading="lazy" decoding="async">
+            </div>
+            <figure class="aura-figure" data-reveal>
+                <img src="image/aura-states.jpg" alt="세 가지 빛의 상태를 표현한 사람 형상의 이미지" loading="lazy" decoding="async">
+                <figcaption>THREE STATES / WITHOUT JUDGEMENT</figcaption>
+            </figure>
+            <div class="sense-content" data-reveal>
+                <p class="catalog-label">02 / SENSE</p>
+                <h2>지금의 에너지는<br>어떤 모습인가요?</h2>
+                <p class="sense-intro">좋거나 나쁜 상태를 고르는 일이 아닙니다. 지금 몸에 가장 가까운 감각 하나만 표시해보세요.</p>
+                <div class="state-options" role="listbox" aria-label="현재 감각">
+                    <button class="active" type="button" role="option" data-state="still" aria-selected="true">고요함</button>
+                    <button type="button" role="option" data-state="unsteady" aria-selected="false">흔들림</button>
+                    <button type="button" role="option" data-state="warm" aria-selected="false">온기</button>
+                </div>
+                <div class="state-reading" aria-live="polite">
+                    <strong data-state-title>고요함</strong>
+                    <p data-state-copy>호흡의 길이가 자연스럽게 이어지는 상태입니다. 이 평온을 붙잡기보다 조용히 알아차려보세요.</p>
+                    <p class="state-action">오늘의 작은 돌봄: <b data-state-action>창가에서 세 번 길게 호흡하기</b></p>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="study">
-            <div class="container">
-                <section id="quote-anxiety" class="quote-modal">
-                    <div class="quote-book">
-                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
-                        <small>불안할 때 펼치는 한 구절</small>
-                        <strong class="quote-title">고요의 문장들</strong>
-                        <p>“마음이 먼저 달려가도 괜찮습니다. 불안은 나를 망가뜨리려 온 것이 아니라, 잠시 멈추어 살피라는 작은 신호일지도 모릅니다.”</p>
-                        <p>발바닥이 바닥에 닿는 감각을 느끼고, 숨이 들어오고 나가는 길을 천천히 따라가세요. 지금 해야 할 일은 전부가 아니라 단 하나, 이 순간으로 돌아오는 일입니다.</p>
-                        <span>『고요의 문장들』, page 07</span>
-                    </div>
-                </section>
-
-                <section id="quote-night" class="quote-modal">
-                    <div class="quote-book">
-                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
-                        <small>잠들기 전 펼치는 한 구절</small>
-                        <strong class="quote-title">밤에게 맡긴 마음</strong>
-                        <p>“오늘을 전부 해결하지 않아도 밤은 찾아옵니다. 남은 마음은 내일의 빛에게 맡겨도 됩니다.”</p>
-                        <p>잘 해낸 일 하나와 견뎌낸 일 하나를 떠올려보세요. 완벽하지 않았던 장면까지도 오늘의 나를 지나온 증거로 놓아두면, 몸은 조금 더 편안히 잠을 기억합니다.</p>
-                        <span>『밤에게 맡긴 마음』, page 12</span>
-                    </div>
-                </section>
-
-                <section id="quote-focus" class="quote-modal">
-                    <div class="quote-book">
-                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
-                        <small>집중이 필요할 때 펼치는 한 구절</small>
-                        <strong class="quote-title">하나의 순간</strong>
-                        <p>“해야 할 모든 일을 한꺼번에 들지 말고, 지금 손에 닿은 하나의 순간만 바라봅니다.”</p>
-                        <p>시선을 한 곳에 두고 가장 작은 첫 행동을 정하세요. 생각이 흩어질 때마다 실패라고 부르지 말고, 다시 돌아오는 연습이 한 번 더 쌓였다고 여겨도 좋습니다.</p>
-                        <span>『하나의 순간』, page 18</span>
-                    </div>
-                </section>
-
-                <section id="quote-heavy" class="quote-modal">
-                    <div class="quote-book">
-                        <a class="close-modal" href="#study" aria-label="닫기">x</a>
-                        <small>마음이 무거울 때 펼치는 한 구절</small>
-                        <strong class="quote-title">내려놓는 연습</strong>
-                        <p>“무거운 마음은 나약함이 아니라 오래 버틴 마음의 무게입니다. 오늘은 조금 내려놓아도 됩니다.”</p>
-                        <p>모든 감정을 설명하려 애쓰지 않아도 괜찮습니다. 이름 붙일 수 없는 마음도 잠시 곁에 앉혀두고, 내가 지금 받을 수 있는 가장 작은 다정함을 골라보세요.</p>
-                        <span>『내려놓는 연습』, page 24</span>
-                    </div>
-                </section>
-
-                <div class="hero hero-study">
-                    <div class="reading-copy">
-                        <p class="eyebrow">Quiet Reading</p>
-                        <h2>Care<br>Sentences</h2>
-                        <p>지금의 마음에 가까운 문장을 하나 골라 천천히 펼쳐보세요. 문장은 선택지가 아니라, 잠시 머물 수 있는 작은 페이지처럼 열립니다.</p>
-                    </div>
-                    <div class="reading-path" aria-label="감정별 문장">
-                        <a class="reading-item" href="#quote-anxiety"><em>01</em><strong>불안할 때</strong><span>발바닥의 감각으로 돌아오는 문장</span><i aria-hidden="true">→</i></a>
-                        <a class="reading-item" href="#quote-night"><em>02</em><strong>잠들기 전</strong><span>오늘을 밤에게 천천히 맡기는 문장</span><i aria-hidden="true">→</i></a>
-                        <a class="reading-item" href="#quote-focus"><em>03</em><strong>집중이 필요할 때</strong><span>하나의 순간만 손에 쥐는 문장</span><i aria-hidden="true">→</i></a>
-                        <a class="reading-item" href="#quote-heavy"><em>04</em><strong>마음이 무거울 때</strong><span>오래 버틴 마음을 내려놓는 문장</span><i aria-hidden="true">→</i></a>
-                    </div>
+        <section class="flow-section record-section" id="record" data-section="record">
+            <div class="section-aura record-aura" aria-hidden="true">
+                <img class="aura-orb" src="image/layers/breath-core.webp" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="record-heading" data-reveal>
+                <p class="catalog-label">03 / RECORD</p>
+                <h2>오늘 몸이 알려준 것을<br>한 문장으로 남깁니다.</h2>
+                <p>기록은 분석이 아니라 흔적입니다. 짧아도 충분합니다.</p>
+                <div class="record-visual" aria-hidden="true">
+                    <img class="record-dust" src="image/layers/aura-dust.webp" alt="" loading="lazy" decoding="async">
+                    <img class="record-glow" src="image/layers/breath-core.webp" alt="" loading="lazy" decoding="async">
+                    <img class="record-figure" src="image/layers/record-figure-v2.webp" alt="" loading="lazy" decoding="async">
                 </div>
             </div>
+            <form class="record-form" data-record-form data-reveal>
+                <label for="daily-note" data-record-prompt>오늘 고요를 느낀 순간은 언제였나요?</label>
+                <textarea id="daily-note" data-record-text rows="6" placeholder="예: 잠시 멈추니 가슴의 긴장이 조금 풀렸다."></textarea>
+                <div class="record-actions">
+                    <button type="submit">오늘의 기록 남기기</button>
+                    <p data-save-status aria-live="polite">아직 저장된 기록이 없습니다.</p>
+                </div>
+            </form>
         </section>
 
-        <section class="section" id="works">
-            <div class="container">
-                <div class="page-section session-showcase works-studio">
-                    <article class="session-feature">
-                        <div>
-                            <p class="section-label">Guided Care</p>
-                            <h3>3분<br>마음 정지</h3>
-                        </div>
-                        <p>바쁜 생각을 잠시 멈추고,<br>이 순간과 나에게 3분의 온기를 건네보세요.</p>
-                        <div class="session-meta"><span>3 min</span><span>Beginner</span></div>
-                        <a class="session-start" href="#routine-01"><span aria-hidden="true"></span>시작하기</a>
-                    </article>
-                    <div class="session-focus" aria-label="작품 호흡 안내">
-                        <div class="breath-orb"><span></span><b>BREATHE</b></div>
-                        <p>천천히 커지는 빛에 맞춰 시선을 낮추고, 한 번의 숨을 길게 놓습니다.</p>
-                    </div>
-                    <div class="session-list">
-                        <article id="routine-01" class="session-item">
-                            <span class="session-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 6v7"></path><path d="M11 11.5c-2.4 1.5-4 4.2-4 7.2 0 4.7 4 7.3 9 7.3s9-2.6 9-7.3c0-3-1.6-5.7-4-7.2"></path><path d="M12 18h8"></path><path d="M16 14v8"></path></svg></span>
-                            <b>01</b>
-                            <div><strong>3분 마음 정지</strong><p>지친 순간에 가장 짧게 돌아오는 루틴.</p><ol class="routine-detail"><li>어깨 힘을 빼고 시선을 낮춥니다.</li><li>네 박자로 들이쉬고 여섯 박자로 내쉽니다.</li><li>지금 필요한 감정을 한 단어로 고릅니다.</li></ol></div>
-                            <em>3 min</em>
-                        </article>
-                        <article class="session-item">
-                            <span class="session-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M9 13c0-3 2.6-5.5 5.9-5.5 4.8 0 8.1 3.9 8.1 8.7 0 5-3.8 8.3-8.3 8.3-2.7 0-5.1-1.2-6.7-3.1"></path><path d="M14.5 12.2c2.7.3 4.8 2.6 4.8 5.4 0 2.5-1.7 4.6-4.1 5.2"></path><path d="M7 18.2h5.2"></path></svg></span>
-                            <b>02</b>
-                            <div><strong>밤의 감정 정리</strong><p>잠들기 전 남은 마음을 낮추는 루틴.</p><ol class="routine-detail"><li>오늘 오래 남은 장면을 떠올립니다.</li><li>내가 애쓴 부분을 한 가지 인정합니다.</li><li>내일로 넘길 마음을 천천히 내려놓습니다.</li></ol></div>
-                            <em>10 min</em>
-                        </article>
-                        <article class="session-item">
-                            <span class="session-icon" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><path d="M16 5l9 11-9 11-9-11 9-11z"></path><path d="M16 10v12"></path><path d="M11 16h10"></path></svg></span>
-                            <b>03</b>
-                            <div><strong>부드러운 집중</strong><p>흩어진 생각을 하나씩 정리하는 루틴.</p><ol class="routine-detail"><li>오늘 가장 중요한 한 가지를 고릅니다.</li><li>주변 소리를 세 번 천천히 듣습니다.</li><li>필요한 첫 행동을 작게 정합니다.</li></ol></div>
-                            <em>7 min</em>
-                        </article>
-                    </div>
-                </div>
+        <section class="closing" id="close" data-reveal>
+            <div class="section-aura close-aura" aria-hidden="true">
+                <img class="aura-ring" src="image/layers/aura-halo.webp" alt="" loading="lazy" decoding="async">
+                <img class="aura-orb" src="image/layers/breath-core.webp" alt="" loading="lazy" decoding="async">
             </div>
+            <p class="catalog-label">END OF PRACTICE</p>
+            <blockquote>내 몸을 듣는 일은<br>아주 조용한 귀환입니다.</blockquote>
+            <p>오늘 남긴 감각은 이 기기에 조용히 보관됩니다.</p>
+            <a href="#home">처음으로 돌아가기 ↑</a>
         </section>
-
-        <section class="section" id="records">
-            <div class="container">
-                <div class="hero hero-records">
-                    <div><p class="eyebrow">Self Archive</p><h2>Mood<br>Map</h2></div>
-                    <div class="intro-card"><span>기록</span><strong>오늘의 기분을 고르고 한 문장으로 남기는 공간</strong><p>감정을 선택하면 그 마음에 맞는 질문과 돌봄 행동이 열립니다. 짧게 적고, 오늘의 나를 조금 더 선명하게 확인해보세요.</p></div>
-                </div>
-
-                <div class="page-section mood-dashboard">
-                    <article class="mood-entry" aria-label="오늘의 감정 기록 작성">
-                        <div class="mood-entry-head">
-                            <p class="section-label">Mood Check-in</p>
-                            <h3>지금 마음을 고르고, 오늘을 한 문장으로 붙잡아보세요.</h3>
-                            <ol class="mood-steps" aria-label="기록 순서"><li class="active">감정 선택</li><li>문장 기록</li><li>돌봄 확인</li></ol>
-                        </div>
-                        <div class="mood-entry-body">
-                            <div class="mood-options" role="listbox" aria-label="감정 목록">
-                                <button class="active" type="button" data-mood="calm" aria-selected="true">평온</button>
-                                <button type="button" data-mood="anxious" aria-selected="false">불안</button>
-                                <button type="button" data-mood="tired" aria-selected="false">무기력</button>
-                                <button type="button" data-mood="sad" aria-selected="false">슬픔</button>
-                                <button type="button" data-mood="grateful" aria-selected="false">감사</button>
-                                <button type="button" data-mood="excited" aria-selected="false">기대</button>
-                            </div>
-                            <label class="mood-writing">
-                                <span data-mood-prompt>오늘 평온을 지켜준 순간은 무엇이었나요?</span>
-                                <textarea data-mood-text rows="5" placeholder="예: 오후에 천천히 걸으면서 마음이 조금 가라앉았다."></textarea>
-                            </label>
-                            <button class="mood-save" type="button">오늘 기록 남기기</button>
-                            <p class="mood-save-status" data-save-status>아직 저장된 문장이 없습니다.</p>
-                        </div>
-                    </article>
-
-                    <article class="mood-today" aria-live="polite">
-                        <p class="section-label">Selected Mood</p>
-                        <strong data-mood-title>평온</strong>
-                        <span data-mood-subtitle>마음의 속도가 안정된 상태</span>
-                        <p data-mood-copy>큰 파도는 잦아들고, 지금 필요한 것을 차분히 바라볼 수 있는 날입니다. 이 상태에서는 무리한 확장보다 리듬을 유지하는 선택이 잘 맞습니다.</p>
-                        <div class="journal-line">오늘 나를 아껴줄 행동은 <b data-mood-action>천천히 걷기</b> 입니다.</div>
-                    </article>
-
-                    <article class="mood-week">
-                        <p class="section-label">Signal</p>
-                        <div class="mood-river" aria-label="일주일 감정 흐름">
-                            <span style="--level:48%" data-level="0"><b>Mon</b></span><span style="--level:72%" data-level="1"><b>Tue</b></span><span style="--level:38%" data-level="2"><b>Wed</b></span><span style="--level:84%" data-level="3"><b>Thu</b></span><span style="--level:62%" data-level="4"><b>Fri</b></span><span style="--level:78%" data-level="5"><b>Sat</b></span><span style="--level:68%" data-level="6"><b>Sun</b></span>
-                        </div>
-                        <div class="mood-insight"><strong data-mood-signal-title>회복 신호</strong><p data-mood-signal>평온한 날에는 결정의 수를 줄이고 익숙한 루틴을 유지할수록 안정감이 오래 이어집니다.</p></div>
-                        <ul class="mood-care-list" aria-label="선택한 감정에 맞는 돌봄 제안">
-                            <li><span>01</span><p data-note="0">몸의 긴장을 살피고 호흡을 길게 가져가면 하루의 시작이 부드러워집니다.</p></li>
-                            <li><span>02</span><p data-note="1">이미 잘 유지하고 있는 리듬 하나를 의식적으로 반복해보세요.</p></li>
-                            <li><span>03</span><p data-note="2">오늘의 나에게 필요한 말은 “이 정도의 고요도 충분하다”입니다.</p></li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="sound">
-            <div class="container">
-                <div class="hero hero-sound">
-                    <div><p class="eyebrow">Soundscape</p><h2>Peaceful<br>Rooms</h2></div>
-                    <div class="intro-card"><span>사운드</span><strong>장면과 소리로 마음을 쉬게 하는 방</strong><p>원하는 분위기를 선택하면 화면의 장면과 백색소음이 함께 흐르는 페이지입니다.</p></div>
-                </div>
-
-                <div class="page-section sound-room" aria-label="선택형 사운드스케이프">
-                    <input type="radio" name="soundscape" id="sound-rain" checked>
-                    <input type="radio" name="soundscape" id="sound-night">
-                    <input type="radio" name="soundscape" id="sound-wind">
-                    <div class="sound-visual">
-                        <div class="sound-orb" aria-hidden="true"></div>
-                        <div class="frequency-field" aria-hidden="true">
-                            <span></span><span></span><span></span><span></span><span></span><span></span>
-                            <span></span><span></span><span></span><span></span><span></span><span></span>
-                            <span></span><span></span><span></span><span></span><span></span><span></span>
-                            <span></span><span></span><span></span><span></span><span></span><span></span>
-                            <span></span><span></span><span></span><span></span><span></span><span></span>
-                        </div>
-                        <article>
-                            <span>Breath Frequency</span>
-                            <h3>소리의 리듬에 맞춰 호흡을 늦추세요</h3>
-                            <p>선택한 사운드에 따라 파동의 간격과 속도가 달라집니다. 눈은 흐름을 따라가고, 호흡은 조금씩 길어집니다.</p>
-                            <audio src="audio/massobeats_dainty.m4a" controls></audio>
-                        </article>
-                    </div>
-                    <div class="sound-options">
-                        <label for="sound-rain"><strong>Soft Rain</strong><span>생각을 천천히 씻어내고 싶을 때</span></label>
-                        <label for="sound-night"><strong>Star Night</strong><span>잠들기 전 몸을 이완하고 싶을 때</span></label>
-                        <label for="sound-wind"><strong>Slow Wind</strong><span>답답한 마음에 공간이 필요할 때</span></label>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="connect">
-            <div class="container">
-                <div class="hero hero-contact">
-                    <div><p class="eyebrow">Stay Connected</p><h2>Gentle<br>Contact</h2></div>
-                    <div class="intro-card"><span>연결</span><strong>고요한 연결을 시작하는 공간</strong><p>명상 콘텐츠와 브랜드 경험에 관한 이야기를 차분하게 이어갑니다.</p></div>
-                </div>
-
-                <div class="page-section routine-flow">
-                    <aside class="routine-intro">
-                        <p class="section-label">Routine Generator</p>
-                        <h3>Personal<br>Stillness</h3>
-                        <p>오늘의 성향과 머무르고 싶은 시간대를 고르면 매번 다른 웹 루틴을 조합합니다.</p>
-                    </aside>
-
-                    <div class="routine-picker" aria-label="성향과 시간대별 루틴 선택">
-                        <div>
-                            <span>성향</span>
-                            <div class="routine-options" data-routine-group="mood">
-                                <button type="button" class="active" data-value="calm">차분</button>
-                                <button type="button" data-value="focus">집중</button>
-                                <button type="button" data-value="restore">회복</button>
-                            </div>
-                        </div>
-                        <div>
-                            <span>카테고리</span>
-                            <div class="routine-options" data-routine-group="time">
-                                <button type="button" class="active" data-value="morning">아침</button>
-                                <button type="button" data-value="day">낮</button>
-                                <button type="button" data-value="night">밤</button>
-                            </div>
-                        </div>
-                        <button type="button" class="routine-refresh">새 루틴 생성</button>
-                    </div>
-
-                    <div class="routine-result" aria-live="polite">
-                        <article class="routine-card"><span>01</span><div><strong data-routine-title="0">감각 열기</strong><p data-routine-copy="0">창가 앞에서 세 번 숨을 고르고 오늘의 몸 상태를 확인합니다.</p></div></article>
-                        <article class="routine-card"><span>02</span><div><strong data-routine-title="1">시선 쉬기</strong><p data-routine-copy="1">화면 밝기를 낮추고 한 지점에 시선을 둔 채 호흡을 느낍니다.</p></div></article>
-                        <article class="routine-card"><span>03</span><div><strong data-routine-title="2">한 줄 남기기</strong><p data-routine-copy="2">지금 가장 또렷한 감정을 짧은 문장으로 적고 천천히 닫습니다.</p></div></article>
-                    </div>
-                </div>
-
-                <div class="wide-note">
-                    <p>깊은 밤의 별처럼, 연결은 크지 않아도 충분히 선명할 수 있습니다.</p>
-                    <a class="soft-button" href="#home">BACK TO STILLNESS</a>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
     <script src="js/main.js"></script>

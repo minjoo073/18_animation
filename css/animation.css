@@ -1,60 +1,370 @@
-.star-layer {
-    animation: starDrift 38s linear infinite;
+.page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 23px;
+    color: var(--paper);
+    background: var(--coal);
+    transition: opacity 980ms ease, visibility 980ms ease;
 }
 
-.background-sky {
-    animation: skyBreathe 14s ease-in-out infinite alternate;
+.page-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
-.breath-orb::before,
-.breath-orb::after {
-    animation: breathe 6s ease-in-out infinite;
+.loader-visual {
+    position: relative;
+    width: clamp(120px, 17vw, 176px);
+    height: clamp(178px, 25vw, 252px);
 }
 
-.breath-orb span {
-    animation: slowSpin 18s linear infinite;
+.loader-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.sound-orb {
-    animation: soundOrbBreath 7s ease-in-out infinite;
+.loader-halo {
+    opacity: 0.48;
+    animation: loaderHalo 4.2s ease-in-out infinite;
 }
 
-.frequency-field span {
-    animation: frequencyPulse 4.2s ease-in-out infinite;
+.loader-core {
+    transform: scale(0.42);
+    animation: loaderCore 4.2s ease-in-out infinite;
 }
 
-.frequency-field span:nth-child(2n) {animation-delay: -0.32s;}
-.frequency-field span:nth-child(3n) {animation-delay: -0.76s;}
-.frequency-field span:nth-child(5n) {animation-delay: -1.68s;}
-
-@keyframes starDrift {
-    0% {background-position: -120px -180px;}
-    100% {background-position: 180px 480px;}
+.loader-logo {
+    inset: 50% auto auto 50% !important;
+    width: clamp(64px, 9vw, 90px) !important;
+    height: auto !important;
+    opacity: 0.86;
+    transform: translate(-50%, -50%);
+    animation: loaderMark 4.2s ease-in-out infinite;
 }
 
-@keyframes skyBreathe {
-    from {opacity: 0.7;}
-    to {opacity: 0.84;}
+.loader-name {
+    margin-top: 8px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 0.26em;
 }
 
-@keyframes breathe {
-    0%, 100% {transform: scale(0.88); opacity: 0.62;}
-    50% {transform: scale(1.08); opacity: 1;}
+.loader-line {
+    width: min(178px, 48vw);
+    height: 1px;
+    overflow: hidden;
+    background: var(--line);
 }
 
-@keyframes slowSpin {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
+.loader-line span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--warm);
+    transform: translateX(-100%);
+    animation: loadLine 2.55s ease-in-out infinite;
 }
 
-@keyframes soundOrbBreath {
-    0%, 100% {transform: translateY(-50%) scale(0.96); opacity: 0.64;}
-    50% {transform: translateY(-50%) scale(1.04); opacity: 1;}
+.loader-copy {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.1em;
 }
 
-@keyframes frequencyPulse {
-    0%, 100% {transform: scaleY(0.36); opacity: 0.42;}
-    50% {transform: scaleY(1.08); opacity: 1;}
+.hero-content,
+.hero-caption {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.page-ready .hero-content,
+.page-ready .hero-caption {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 900ms ease 160ms, transform 900ms ease 160ms;
+}
+
+.page-ready .hero-caption {
+    transition-delay: 420ms;
+}
+
+.hero-figure {
+    animation: floatFigure 11s ease-in-out infinite alternate;
+}
+
+.hero-halo {
+    animation: breatheHalo 9s ease-in-out infinite;
+}
+
+.hero-dust {
+    animation: driftDust 20s linear infinite alternate;
+}
+
+.hero-core {
+    animation: pulseCore 7s ease-in-out infinite;
+}
+
+.breath-display.running {
+    animation: pulseLine 6s ease-in-out infinite;
+}
+
+.breath-core {
+    animation: idleCore 8s ease-in-out infinite;
+}
+
+.breath-display.running .breath-core {
+    animation: practiceCore 6s ease-in-out infinite;
+}
+
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 720ms ease, transform 720ms ease;
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.breathe-section .breath-practice,
+.sense-section .sense-content,
+.record-section .record-form {
+    transition-delay: 110ms;
+}
+
+.breathe-aura {
+    animation: roamingOrbLeft 20s ease-in-out infinite alternate;
+}
+
+.sense-aura {
+    animation: roamingHaloRight 26s ease-in-out -7s infinite alternate;
+}
+
+.record-aura {
+    animation: roamingOrbRight 22s ease-in-out -11s infinite alternate;
+}
+
+.close-aura {
+    animation: closingGlow 16s ease-in-out infinite alternate;
+}
+
+.page-ready .flow-aurora-mid {
+    animation: veilFlowRight 34s ease-in-out infinite alternate;
+}
+
+.page-ready .flow-aurora-low {
+    animation: veilFlowLeft 39s ease-in-out -13s infinite alternate;
+}
+
+.aura-figure img {
+    transition: transform 900ms ease, filter 900ms ease;
+}
+
+.aura-figure.is-visible img {
+    animation: portraitHover 13s ease-in-out infinite alternate;
+    filter: contrast(1.04);
+}
+
+.state-reading.is-changing {
+    animation: readingShift 420ms ease;
+}
+
+.record-heading.is-visible .record-figure {
+    animation: seatedFloat 10.5s ease-in-out infinite alternate;
+}
+
+.record-heading.is-visible .record-glow {
+    animation: recordPulse 6.4s ease-in-out infinite;
+}
+
+.record-heading.is-visible .record-dust {
+    animation: recordDust 18s linear infinite alternate;
+}
+
+.record-form:focus-within::before,
+.record-section.is-saved .record-form::before {
+    animation: fieldAura 2.2s ease-out;
+}
+
+.record-section.is-saved .record-glow {
+    animation: savedPulse 1.65s ease-out, recordPulse 6.4s ease-in-out 1.65s infinite;
+}
+
+.record-section.is-saved .record-actions button {
+    animation: buttonConfirm 640ms ease;
+}
+
+.record-form textarea {
+    transition: border-color 360ms ease, color 360ms ease;
+}
+
+.catalog-label::after {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 1px;
+    margin-left: 13px;
+    vertical-align: middle;
+    background: var(--warm);
+    transform: scaleX(0.22);
+    transform-origin: left;
+    opacity: 0.4;
+    transition: transform 700ms ease, opacity 700ms ease;
+}
+
+[data-reveal].is-visible .catalog-label::after,
+.page-ready .hero .catalog-label::after {
+    transform: scaleX(1);
+    opacity: 0.72;
+}
+
+.start-link span {
+    display: inline-block;
+    animation: cueDrop 2.6s ease-in-out infinite;
+}
+
+@keyframes loaderHalo {
+    0%, 100% {transform: scale(0.96); opacity: 0.46;}
+    50% {transform: scale(1.05); opacity: 0.84;}
+}
+
+@keyframes loaderCore {
+    0%, 100% {transform: scale(0.34); opacity: 0.42;}
+    50% {transform: scale(0.49); opacity: 0.9;}
+}
+
+@keyframes loaderMark {
+    0%, 100% {transform: translate(-50%, -50%) scale(0.96); opacity: 0.72;}
+    50% {transform: translate(-50%, -50%) scale(1.03); opacity: 0.94;}
+}
+
+@keyframes loadLine {
+    0% {transform: translateX(-100%);}
+    48%, 52% {transform: translateX(0);}
+    100% {transform: translateX(100%);}
+}
+
+@keyframes floatFigure {
+    from {transform: translateY(0) scale(0.99);}
+    to {transform: translateY(-15px) scale(1.01);}
+}
+
+@keyframes breatheHalo {
+    0%, 100% {transform: scale(0.98); opacity: 0.58;}
+    50% {transform: scale(1.035); opacity: 0.82;}
+}
+
+@keyframes driftDust {
+    from {transform: translate(-14px, 12px) scale(0.99); opacity: 0.4;}
+    to {transform: translate(18px, -11px) scale(1.02); opacity: 0.66;}
+}
+
+@keyframes pulseCore {
+    0%, 100% {transform: scale(0.9); opacity: 0.28;}
+    50% {transform: scale(1.16); opacity: 0.64;}
+}
+
+@keyframes pulseLine {
+    0%, 100% {border-top-color: rgba(225, 218, 202, 0.58);}
+    50% {border-top-color: rgba(227, 206, 140, 0.92);}
+}
+
+@keyframes idleCore {
+    0%, 100% {transform: translateY(-50%) scale(0.94); opacity: 0.18;}
+    50% {transform: translateY(-50%) scale(1.04); opacity: 0.3;}
+}
+
+@keyframes practiceCore {
+    0%, 100% {transform: translateY(-50%) scale(0.82); opacity: 0.22;}
+    48% {transform: translateY(-50%) scale(1.12); opacity: 0.58;}
+}
+
+@keyframes portraitHover {
+    from {transform: translateY(0); filter: contrast(1);}
+    to {transform: translateY(-7px); filter: contrast(1.05);}
+}
+
+@keyframes cueDrop {
+    0%, 100% {transform: translateY(0); opacity: 0.62;}
+    48% {transform: translateY(6px); opacity: 1;}
+}
+
+@keyframes readingShift {
+    from {opacity: 0.36; transform: translateY(6px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes roamingOrbLeft {
+    from {transform: translate(-12px, 14px) scale(0.88); opacity: 0.2;}
+    to {transform: translate(34px, -18px) scale(1.12); opacity: 0.5;}
+}
+
+@keyframes veilFlowRight {
+    0% {transform: translate3d(0, -14px, 0) rotate(-1deg) scale(1.02); opacity: 0.07;}
+    45% {transform: translate3d(-44px, 22px, 0) rotate(1deg) scale(1.1); opacity: 0.16;}
+    100% {transform: translate3d(18px, -8px, 0) rotate(-0.5deg) scale(1.05); opacity: 0.11;}
+}
+
+@keyframes veilFlowLeft {
+    0% {transform: translate3d(-22px, 15px, 0) rotate(1deg) scale(1.04); opacity: 0.06;}
+    48% {transform: translate3d(36px, -18px, 0) rotate(-1deg) scale(1.1); opacity: 0.14;}
+    100% {transform: translate3d(-10px, 6px, 0) scale(1.06); opacity: 0.1;}
+}
+
+@keyframes roamingHaloRight {
+    from {transform: translate(18px, -15px) rotate(-2deg) scale(0.95); opacity: 0.16;}
+    to {transform: translate(-34px, 28px) rotate(3deg) scale(1.08); opacity: 0.34;}
+}
+
+@keyframes roamingOrbRight {
+    from {transform: translate(12px, -16px) scale(0.9); opacity: 0.12;}
+    to {transform: translate(-26px, 24px) scale(1.18); opacity: 0.34;}
+}
+
+@keyframes closingGlow {
+    from {transform: translateX(-50%) translateY(8px) scale(0.94); opacity: 0.15;}
+    to {transform: translateX(-50%) translateY(-9px) scale(1.08); opacity: 0.29;}
+}
+
+@keyframes seatedFloat {
+    from {transform: translateY(4px) scale(0.985); opacity: 0.82;}
+    to {transform: translateY(-10px) scale(1.015); opacity: 1;}
+}
+
+@keyframes recordPulse {
+    0%, 100% {transform: scale(0.8); opacity: 0.22;}
+    50% {transform: scale(1.2); opacity: 0.58;}
+}
+
+@keyframes recordDust {
+    from {transform: translate(-12px, 8px); opacity: 0.3;}
+    to {transform: translate(16px, -9px); opacity: 0.58;}
+}
+
+@keyframes fieldAura {
+    0% {transform: scale(0.76); opacity: 0;}
+    38% {transform: scale(1.03); opacity: 0.9;}
+    100% {transform: scale(1.3); opacity: 0;}
+}
+
+@keyframes savedPulse {
+    0% {transform: scale(0.84); opacity: 0.22;}
+    32% {transform: scale(1.42); opacity: 0.85;}
+    100% {transform: scale(0.92); opacity: 0.3;}
+}
+
+@keyframes buttonConfirm {
+    0% {transform: translateY(0);}
+    45% {transform: translateY(-3px); background: var(--warm);}
+    100% {transform: translateY(0);}
 }
 
 @media (prefers-reduced-motion: reduce) {
