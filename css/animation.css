@@ -40,10 +40,10 @@
     animation: loaderCore 4.2s ease-in-out infinite;
 }
 
-.loader-logo {
-    inset: 50% auto auto 50% !important;
-    width: clamp(64px, 9vw, 90px) !important;
-    height: auto !important;
+.loader-visual .loader-logo {
+    inset: 50% auto auto 50%;
+    width: clamp(64px, 9vw, 90px);
+    height: auto;
     opacity: 0.86;
     transform: translate(-50%, -50%);
     animation: loaderMark 4.2s ease-in-out infinite;
@@ -154,14 +154,6 @@
 
 .close-aura {
     animation: closingGlow 16s ease-in-out infinite alternate;
-}
-
-.page-ready .flow-aurora-mid {
-    animation: veilFlowRight 34s ease-in-out infinite alternate;
-}
-
-.page-ready .flow-aurora-low {
-    animation: veilFlowLeft 39s ease-in-out -13s infinite alternate;
 }
 
 .aura-figure img {
@@ -305,18 +297,6 @@
 @keyframes roamingOrbLeft {
     from {transform: translate(-12px, 14px) scale(0.88); opacity: 0.2;}
     to {transform: translate(34px, -18px) scale(1.12); opacity: 0.5;}
-}
-
-@keyframes veilFlowRight {
-    0% {transform: translate3d(0, -14px, 0) rotate(-1deg) scale(1.02); opacity: 0.07;}
-    45% {transform: translate3d(-44px, 22px, 0) rotate(1deg) scale(1.1); opacity: 0.16;}
-    100% {transform: translate3d(18px, -8px, 0) rotate(-0.5deg) scale(1.05); opacity: 0.11;}
-}
-
-@keyframes veilFlowLeft {
-    0% {transform: translate3d(-22px, 15px, 0) rotate(1deg) scale(1.04); opacity: 0.06;}
-    48% {transform: translate3d(36px, -18px, 0) rotate(-1deg) scale(1.1); opacity: 0.14;}
-    100% {transform: translate3d(-10px, 6px, 0) scale(1.06); opacity: 0.1;}
 }
 
 @keyframes roamingHaloRight {

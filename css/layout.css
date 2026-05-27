@@ -1,3 +1,19 @@
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 200;
+    padding: 12px 20px;
+    color: var(--coal);
+    background: var(--bone);
+    font-size: 14px;
+    border-radius: 0 0 6px 6px;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 body {
     color: var(--paper);
     font-family: var(--font-serif);
@@ -32,18 +48,11 @@ main {
     overflow: hidden;
 }
 
-.flow-atmosphere {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
 .flow-section {
     position: relative;
     isolation: isolate;
     z-index: 1;
-    width: min(var(--content), calc(100% - var(--edge) * 2));
+    width: min(var(--content-max-width), calc(100% - var(--edge) * 2));
     margin: 0 auto;
     padding: clamp(58px, 7.2vw, 88px) 0;
     scroll-margin-top: 76px;

@@ -19,6 +19,16 @@ const stateData = {
     }
 };
 
+function safeGetItem(key) {
+    try { return JSON.parse(localStorage.getItem(key)); }
+    catch { return null; }
+}
+
+function safeSetItem(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch { return false; }
+}
+
 const stateButtons = document.querySelectorAll('[data-state]');
 const stateTitle = document.querySelector('[data-state-title]');
 const stateCopy = document.querySelector('[data-state-copy]');
@@ -29,7 +39,7 @@ const recordText = document.querySelector('[data-record-text]');
 const recordForm = document.querySelector('[data-record-form]');
 const recordSection = document.querySelector('.record-section');
 const saveStatus = document.querySelector('[data-save-status]');
-const storageKey = 'innerStillnessDailyRecord';
+const storageKey = 'innerStillnessRecords';
 let currentState = 'still';
 
 function selectState(key) {
@@ -41,7 +51,7 @@ function selectState(key) {
     stateButtons.forEach((button) => {
         const active = button.dataset.state === key;
         button.classList.toggle('active', active);
-        button.setAttribute('aria-selected', active);
+        button.setAttribute('aria-checked', active);
         button.tabIndex = active ? 0 : -1;
     });
     stateTitle.textContent = selected.title;
@@ -70,6 +80,27 @@ stateButtons.forEach((button) => {
 
 selectState(currentState);
 
+function getTodayKey() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+}
+
+function loadRecords() {
+    return safeGetItem(storageKey) || {};
+}
+
+function loadTodayRecord() {
+    const records = loadRecords();
+    const today = records[getTodayKey()];
+
+    if (today && stateData[today.state] && typeof today.text === 'string') {
+        selectState(today.state);
+        recordText.value = today.text;
+        const count = Object.keys(records).length;
+        saveStatus.textContent = `저장된 ${stateData[today.state].title} 기록을 불러왔습니다. (총 ${count}일 기록)`;
+    }
+}
+
 recordForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const text = recordText.value.trim();
@@ -80,28 +111,26 @@ recordForm.addEventListener('submit', (event) => {
         return;
     }
 
-    localStorage.setItem(storageKey, JSON.stringify({
+    const records = loadRecords();
+    records[getTodayKey()] = {
         state: currentState,
         text,
         savedAt: new Date().toISOString()
-    }));
-    saveStatus.textContent = `오늘의 ${stateData[currentState].title} 기록을 남겼습니다.`;
+    };
+
+    if (!safeSetItem(storageKey, records)) {
+        saveStatus.textContent = '저장에 실패했습니다. 저장 공간을 확인해주세요.';
+        return;
+    }
+
+    const count = Object.keys(records).length;
+    saveStatus.textContent = `오늘의 ${stateData[currentState].title} 기록을 남겼습니다. (총 ${count}일 기록)`;
     recordSection.classList.remove('is-saved');
     void recordSection.offsetWidth;
     recordSection.classList.add('is-saved');
 });
 
-try {
-    const saved = JSON.parse(localStorage.getItem(storageKey));
-
-    if (saved && stateData[saved.state] && typeof saved.text === 'string') {
-        selectState(saved.state);
-        recordText.value = saved.text;
-        saveStatus.textContent = `저장된 ${stateData[saved.state].title} 기록을 불러왔습니다.`;
-    }
-} catch (error) {
-    localStorage.removeItem(storageKey);
-}
+loadTodayRecord();
 
 const display = document.querySelector('[data-breath-display]');
 const phase = document.querySelector('[data-breath-phase]');
@@ -110,7 +139,8 @@ const durationButtons = document.querySelectorAll('[data-duration]');
 const startButton = document.querySelector('[data-breath-start]');
 let duration = 60;
 let remaining = duration;
-let timer = null;
+let timerRAF = null;
+let timerEnd = null;
 
 function formatTime(seconds) {
     const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
@@ -124,7 +154,7 @@ function renderClock() {
 
 durationButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        if (timer) return;
+        if (timerRAF) return;
         duration = Number(button.dataset.duration);
         remaining = duration;
         durationButtons.forEach((item) => {
@@ -136,10 +166,30 @@ durationButtons.forEach((button) => {
     });
 });
 
+function tickTimer() {
+    const now = Date.now();
+    remaining = Math.max(0, Math.round((timerEnd - now) / 1000));
+    renderClock();
+
+    if (remaining === 0) {
+        timerRAF = null;
+        timerEnd = null;
+        phase.textContent = '호흡을 마쳤습니다';
+        startButton.textContent = '다시 하기';
+        display.classList.remove('running');
+
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+        return;
+    }
+
+    timerRAF = requestAnimationFrame(tickTimer);
+}
+
 startButton.addEventListener('click', () => {
-    if (timer) {
-        clearInterval(timer);
-        timer = null;
+    if (timerRAF) {
+        cancelAnimationFrame(timerRAF);
+        timerRAF = null;
+        timerEnd = null;
         phase.textContent = '잠시 멈췄습니다';
         startButton.textContent = '다시 시작';
         display.classList.remove('running');
@@ -150,17 +200,8 @@ startButton.addEventListener('click', () => {
     phase.textContent = '숨을 천천히 따라가세요';
     startButton.textContent = '잠시 멈춤';
     display.classList.add('running');
-    timer = setInterval(() => {
-        remaining -= 1;
-        renderClock();
-        if (remaining === 0) {
-            clearInterval(timer);
-            timer = null;
-            phase.textContent = '호흡을 마쳤습니다';
-            startButton.textContent = '다시 하기';
-            display.classList.remove('running');
-        }
-    }, 1000);
+    timerEnd = Date.now() + remaining * 1000;
+    timerRAF = requestAnimationFrame(tickTimer);
 });
 
 const audio = document.querySelector('[data-ambient-audio]');
@@ -173,7 +214,7 @@ soundToggle.addEventListener('click', async () => {
             await audio.play();
             soundToggle.setAttribute('aria-pressed', 'true');
             soundLabel.textContent = 'SOUND ON';
-        } catch (error) {
+        } catch {
             soundLabel.textContent = 'SOUND OFF';
         }
     } else {
@@ -186,17 +227,16 @@ soundToggle.addEventListener('click', async () => {
 const navLinks = document.querySelectorAll('[data-nav]');
 const sections = document.querySelectorAll('[data-section]');
 
-const observer = new IntersectionObserver((entries) => {
+const navObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         navLinks.forEach((link) => link.classList.toggle('active', link.dataset.nav === entry.target.id));
     });
-}, {rootMargin: '-30% 0px -55%'});
+}, { rootMargin: '-30% 0px -55%' });
 
-sections.forEach((section) => observer.observe(section));
+sections.forEach((section) => navObserver.observe(section));
 
 const loader = document.querySelector('[data-loader]');
-const revealed = document.querySelectorAll('[data-reveal]');
 
 function finishLoading() {
     document.body.classList.remove('is-loading');
@@ -210,12 +250,14 @@ window.addEventListener('load', () => {
     window.setTimeout(finishLoading, delay);
 });
 
-const revealObserver = new IntersectionObserver((entries, target) => {
+const revealed = document.querySelectorAll('[data-reveal]');
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('is-visible');
-        target.unobserve(entry.target);
+        observer.unobserve(entry.target);
     });
-}, {threshold: 0.16, rootMargin: '0px 0px -8%'});
+}, { threshold: 0.16, rootMargin: '0px 0px -8%' });
 
 revealed.forEach((element) => revealObserver.observe(element));

@@ -108,16 +108,6 @@
         right: -20vw;
     }
 
-    .flow-aurora-mid {
-        top: 10%;
-        right: -78vw;
-        width: 188vw;
-    }
-
-    .flow-aurora-low {
-        left: -64vw;
-        width: 195vw;
-    }
 }
 
 @media (max-width: 520px) {

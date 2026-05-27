@@ -9,7 +9,7 @@
     --warm: #e3ce8c;
     --coral: #d48669;
     --seafoam: #a6c9be;
-    --content: 1240px;
+    --content-max-width: 1240px;
     --edge: clamp(20px, 5vw, 70px);
     --font-serif: "Noto Serif KR", serif;
     --font-display: "Cormorant Garamond", serif;

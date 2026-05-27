@@ -129,29 +129,6 @@
     pointer-events: none;
 }
 
-.flow-atmosphere img {
-    position: absolute;
-    display: block;
-    max-width: none;
-    opacity: 0;
-    mix-blend-mode: screen;
-    filter: blur(7px) saturate(0.75) contrast(0.9);
-    -webkit-mask-image: radial-gradient(ellipse 66% 62% at 50% 50%, #000 26%, rgba(0, 0, 0, 0.78) 49%, transparent 82%);
-    mask-image: radial-gradient(ellipse 66% 62% at 50% 50%, #000 26%, rgba(0, 0, 0, 0.78) 49%, transparent 82%);
-}
-
-.flow-aurora-mid {
-    top: 4%;
-    right: -29%;
-    width: min(100vw, 1420px);
-}
-
-.flow-aurora-low {
-    bottom: -3%;
-    left: -24%;
-    width: min(108vw, 1500px);
-}
-
 .section-aura img {
     position: absolute;
     display: block;
